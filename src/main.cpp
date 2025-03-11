@@ -32,6 +32,7 @@ void processGPSData() {
 
     StaticJsonDocument<200> doc;
 
+    doc["device"] = "base";
     doc["time"] = gps.time.value();
     doc["lat_error"] = String((lat - BASE_LAT), 8);
     doc["lon_error"] = String((lon - BASE_LON), 8);
@@ -51,6 +52,14 @@ void setup() {
   GPS.begin(115200);
   Serial.begin(115200);
   WiFi.begin(ssid, password);
+
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+
+  Serial.println("Connected to WiFi");
+
   udp.begin(udpPort);
 }
 
