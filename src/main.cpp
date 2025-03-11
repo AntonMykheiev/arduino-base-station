@@ -52,14 +52,6 @@ void setup() {
   GPS.begin(115200);
   Serial.begin(115200);
   WiFi.begin(ssid, password);
-
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
-  }
-
-  Serial.println("Connected to WiFi");
-
   udp.begin(udpPort);
 }
 
