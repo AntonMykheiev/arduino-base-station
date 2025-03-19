@@ -46,7 +46,6 @@ void loop() {
         udp.beginPacket(udpAddress, udpPort);
         udp.write(rtcmBuffer, index);
         udp.endPacket();
-        Serial.println("RTCM data sent!");
 
         index = 0;
       }
